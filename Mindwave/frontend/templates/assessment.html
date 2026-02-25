@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment - Mindwave</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=134153470630952727">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <!-- MediaPipe Face Mesh CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="assessment-layout">
+        <!-- Left Column: Real-time Metrics -->
+        <aside class="metrics-panel">
+            <div class="panel-header">
+                <h2>Real-time Metrics</h2>
+            </div>
+            
+            <!-- Emotional State Widget -->
+            <div class="widget card">
+                <h3>Emotional State</h3>
+                <div class="emotion-bars">
+                    <div class="emotion-item">
+                        <span class="emotion-label">Happiness</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-emotion="happiness" style="width: 0%"></div>
+                        </div>
+                        <span class="percentage">0%</span>
+                    </div>
+                    <div class="emotion-item">
+                        <span class="emotion-label">Sadness</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-emotion="sadness" style="width: 0%"></div>
+                        </div>
+                        <span class="percentage">0%</span>
+                    </div>
+                    <div class="emotion-item">
+                        <span class="emotion-label">Anger</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-emotion="anger" style="width: 0%"></div>
+                        </div>
+                        <span class="percentage">0%</span>
+                    </div>
+                    <div class="emotion-item">
+                        <span class="emotion-label">Fear</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-emotion="fear" style="width: 0%"></div>
+                        </div>
+                        <span class="percentage">0%</span>
+                    </div>
+                    <div class="emotion-item">
+                        <span class="emotion-label">Neutral</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-emotion="neutral" style="width: 0%"></div>
+                        </div>
+                        <span class="percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stress Level Widget -->
+            <div class="widget card">
+                <h3>Stress Level</h3>
+                <div class="stress-gauge">
+                    <div class="gauge-container">
+                        <svg width="180" height="110" class="gauge-svg">
+                            <path d="M 25 85 A 65 65 0 0 1 155 85" fill="none" stroke="var(--bg-panel)" stroke-width="12" />
+                            <path d="M 25 85 A 65 65 0 0 1 155 85" fill="none" stroke="var(--accent-cyan)" stroke-width="12" stroke-dasharray="205" stroke-dashoffset="205" class="gauge-fill" />
+                        </svg>
+                        <div class="gauge-label">Calm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recording Controls -->
+            <div class="widget card">
+                <h3>Recording</h3>
+                <div class="recording-controls">
+                    <button id="startAssessment" class="btn btn-primary">Start Recording</button>
+                    <button id="stopAssessment" class="btn btn-secondary" disabled>Stop Recording</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Column: Main Camera Feed -->
+        <main class="camera-section">
+            <div class="camera-container">
+                <div class="video-wrapper circular-camera">
+                    <video id="assessmentVideo" autoplay playsinline class="assessment-video"></video>
+                    <canvas id="meshCanvas" class="mesh-overlay"></canvas>
+                </div>
+                <div class="camera-status">
+                    <span id="faceDetectionStatus">Detecting face...</span>
+                </div>
+                <div class="recording-controls">
+                    <button id="startAssessment" class="btn btn-primary">Start Recording</button>
+                    <button id="stopAssessment" class="btn btn-secondary" disabled>Stop Recording</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Column: The Interviewer -->
+        <aside class="interviewer-panel">
+            <div class="panel-header">
+                <h2>The Interviewer</h2>
+            </div>
+            
+            <div class="widget card">
+                <h3>Current Question</h3>
+                <div class="question-display">
+                    <p id="currentQuestion">How are you feeling today?</p>
+                </div>
+            </div>
+
+            <div class="widget card">
+                <h3>Your Response</h3>
+                <div class="response-area">
+                    <textarea id="userResponse" placeholder="Type your response here..." rows="6"></textarea>
+                    <button id="submitResponse" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            <div class="widget card">
+                <h3>Session Progress</h3>
+                <div class="progress-info">
+                    <div class="progress-item">
+                        <span>Questions Completed:</span>
+                        <span id="completedCount">0/10</span>
+                    </div>
+                    <div class="progress-item">
+                        <span>Time Elapsed:</span>
+                        <span id="timeElapsed">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/assessment.js') }}?v=134153470630952727"></script>
+</body>
+</html>

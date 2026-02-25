@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindwave - AI Mental Health Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="landing-container">
+        <main class="landing-content">
+            <div class="content-box fade-in">
+                <!-- Logo -->
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="Mindwave Logo" class="logo-image">
+                </div>
+                
+                <!-- Heading -->
+                <h1 class="main-heading">Mindwave</h1>
+                
+                <!-- Sub-heading -->
+                <p class="sub-heading">Real Data. Real Insight.</p>
+                
+                <!-- Buttons -->
+                <div class="button-group slide-up">
+                    <a href="/login" class="btn btn-secondary">Login</a>
+                    <a href="/signup" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

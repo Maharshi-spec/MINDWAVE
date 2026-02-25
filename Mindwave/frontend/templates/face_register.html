@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Registration - Mindwave</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="camera-container">
+        <div class="camera-content">
+            <div class="logo">
+                <h1>Mindwave</h1>
+            </div>
+            
+            <div class="camera-setup">
+                <h2>Biometric Setup</h2>
+                <p class="instruction-text">Scanning for biometric match...</p>
+                
+                <div class="video-wrapper circular-camera">
+                    <video id="video" autoplay playsinline class="circular-video"></video>
+                </div>
+                
+                <div class="camera-controls">
+                    <button id="startCamera" class="btn btn-secondary">Start Camera</button>
+                    <button id="captureComplete" class="btn btn-primary" disabled>Capture & Complete</button>
+                </div>
+                
+                <div class="instructions">
+                    <p>Position your face within the circle for optimal scanning</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+</body>
+</html>

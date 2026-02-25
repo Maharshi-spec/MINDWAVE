@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="120" height="120">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66fcf1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#45a29e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Brain-like shape -->
+  <path d="M50 15 
+           C 35 15, 20 25, 20 40 
+           C 20 55, 25 65, 30 70 
+           C 35 75, 40 78, 50 80 
+           C 60 78, 65 75, 70 70 
+           C 75 65, 80 55, 80 40 
+           C 80 25, 65 15, 50 15 Z" 
+        fill="url(#brainGradient)" 
+        filter="url(#glow)"
+        stroke="#66fcf1" 
+        stroke-width="2"/>
+  
+  <!-- Waves/Waveforms -->
+  <path d="M25 45 Q 30 40, 35 45 Q 40 50, 45 45 Q 50 40, 55 45 Q 60 50, 65 45 Q 70 40, 75 45" 
+        fill="none" 
+        stroke="#66fcf1" 
+        stroke-width="2" 
+        stroke-opacity="0.7"/>
+  
+  <path d="M25 55 Q 30 50, 35 55 Q 40 60, 45 55 Q 50 50, 55 55 Q 60 60, 65 55 Q 70 50, 75 55" 
+        fill="none" 
+        stroke="#66fcf1" 
+        stroke-width="2" 
+        stroke-opacity="0.5"/>
+  
+  <!-- Central dot/pulse -->
+  <circle cx="50" cy="50" r="3" fill="#66fcf1">
+    <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
