@@ -68,7 +68,6 @@ class AssessmentEngine {
     startProcessing() {
         const sendFrame = async () => {
             if (this.videoElement.videoWidth) {
-                // --- INSERT THIS BLOCK ---
                 // Check brightness every 1 second
                 if (!this.lastLightCheck || Date.now() - this.lastLightCheck > 1000) {
                     const ctx = this.canvasCtx;
